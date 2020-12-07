@@ -9,6 +9,14 @@ export default class Counter extends Component {
         }
     }
 
+    componentDidMount() {
+        this.props.onRef(this)
+    }
+
+    componentWillUnmount() {
+        this.props.onRef(undefined)
+    }
+
     onIncrease = () => {
         this.setState((prevState) => ({ number: prevState.number + 1 }))
         this.props.counterChange(1)
@@ -19,7 +27,7 @@ export default class Counter extends Component {
         this.props.counterChange(-1)
     }
 
-    componentWillUnmount(){
+    reset = () => {
         this.setState({ number: 0 })
     }
 

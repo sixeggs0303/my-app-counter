@@ -4,10 +4,15 @@ import Counter from './Counter.js'
 export default class CounterGroup extends Component {
     constructor(props) {
         super(props)
+        this.counters = []
+    }
 
-        this.state = {
-            sum: 0
-        }
+    componentDidMount() {
+        this.props.onRef(this)
+    }
+
+    componentWillUnmount() {
+        this.props.onRef(undefined)
     }
 
     initArraySize = (number) => {
@@ -16,8 +21,13 @@ export default class CounterGroup extends Component {
     }
 
     countSum = (change) => {
-        this.setState((prevState) => ({ sum: prevState.sum + change }))
-        this.props.sum(this.state.sum + change)
+        this.props.counterChange(change)
+    }
+
+    reset = () => {
+        for (var i = 0; i < this.props.size; i++) {
+            this.counters[i].reset()
+        }
     }
 
     render() {
@@ -27,7 +37,7 @@ export default class CounterGroup extends Component {
         return (
             <div>
                 {initArraySize.map((value) => (
-                    <Counter key={value} counterChange={this.countSum} />
+                    <Counter onRef={ref => (this.counters[value] = ref)} key={value} counterChange={this.countSum} />
                 ))
                 }
             </div>
