@@ -17,7 +17,6 @@ export default class Counter extends Component {
         this.setState((prevState) => ({ number: prevState.number - 1 }));
     }
 
-
     render() {
         return (
             <section>
