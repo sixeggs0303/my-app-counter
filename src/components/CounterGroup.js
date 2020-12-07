@@ -20,5 +20,5 @@ export default class CounterGroup extends Component {
                 }
             </div>
         );
-    }
+    };
 }
