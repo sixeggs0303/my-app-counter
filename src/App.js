@@ -1,11 +1,11 @@
 import './App.css';
-import CounterGroup from './components/CounterGroup.js';
+import MultiCounter from './components/MultiCounter.js';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CounterGroup />
+        <MultiCounter />
       </header>
     </div>
   );
