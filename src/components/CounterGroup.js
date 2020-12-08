@@ -37,7 +37,7 @@ export default class CounterGroup extends Component {
         return (
             <div>
                 {initArraySize.map((value) => (
-                    <Counter onRef={ref => (this.counters[value] = ref)} key={value} counterChange={this.countSum} />
+                    <Counter size={size} onRef={ref => (this.counters[value] = ref)} key={value} counterChange={this.countSum} />
                 ))
                 }
             </div>

@@ -13,10 +13,12 @@ export default class MultiCounter extends Component {
         }
     }
 
-    handleSizeCallback = (sizeInput) => {
+    handleSizeChange = (sizeInput) => {
         this.setState({ size: sizeInput })
         this.setState({ sum: 0 })
-        this.counterGroup.reset()
+
+        // Reference approach
+        // this.counterGroup.reset()
     }
 
     calSum = (change) => {
@@ -26,7 +28,7 @@ export default class MultiCounter extends Component {
     render() {
         return (
             <div>
-                <CounterSizeGenerator sizeCallback={this.handleSizeCallback} />
+                <CounterSizeGenerator onSizeChange={this.handleSizeChange} />
                 <CounterGroupSum sum={this.state.sum} />
                 <CounterGroup onRef={ref => (this.counterGroup = ref)} size={this.state.size} counterChange={this.calSum} />
             </div>
