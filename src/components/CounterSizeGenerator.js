@@ -11,7 +11,8 @@ export default class CounterSizeGenerator extends Component {
 
     onChange = (event) => {
         this.setState({ size: event.target.value })
-        this.props.onSizeChange(event.target.value)
+        this.props.changeSize(event.target.value)
+        this.props.reset()
     }
 
     render() {
