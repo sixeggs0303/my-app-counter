@@ -12,7 +12,7 @@ export default class Counter extends Component {
     // Props update approach
     shouldComponentUpdate = (nextProps) => {
         if (nextProps.size !== this.props.size) {
-            this.setState({number: 0})
+            this.setState({ number: 0 })
         }
         return true
     }
@@ -27,12 +27,14 @@ export default class Counter extends Component {
 
     onIncrease = () => {
         this.setState((prevState) => ({ number: prevState.number + 1 }))
-        this.props.counterChange(1)
+        this.props.increase()
+        // this.props.counterChange(1)
     }
 
     onDecrease = () => {
         this.setState((prevState) => ({ number: prevState.number - 1 }))
-        this.props.counterChange(-1)
+        this.props.decrease()
+        // this.props.counterChange(-1)
     }
 
     reset = () => {
