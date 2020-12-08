@@ -9,32 +9,14 @@ export default class Counter extends Component {
         }
     }
 
-    // Props update approach
-    shouldComponentUpdate = (nextProps) => {
-        if (nextProps.size !== this.props.size) {
-            this.setState({ number: 0 })
-        }
-        return true
-    }
-
-    componentDidMount() {
-        this.props.onRef(this)
-    }
-
-    componentWillUnmount() {
-        this.props.onRef(undefined)
-    }
-
     onIncrease = () => {
         this.setState((prevState) => ({ number: prevState.number + 1 }))
         this.props.increase()
-        // this.props.counterChange(1)
     }
 
     onDecrease = () => {
         this.setState((prevState) => ({ number: prevState.number - 1 }))
         this.props.decrease()
-        // this.props.counterChange(-1)
     }
 
     reset = () => {
